@@ -17,7 +17,7 @@ class Comfy::Blog::Post < ActiveRecord::Base
   validates :title, :slug, :year, :month,
     presence: true
   validates :slug,
-    uniqueness: { scope: %i[site_id year month] },
+    uniqueness: true,
     format:     { with: %r{\A%*\w[a-z0-9_%-]*\z}i }
 
   # -- Scopes ------------------------------------------------------------------

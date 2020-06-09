@@ -2,6 +2,8 @@
 
 = form.text_field :title, data: {slugify: @post.new_record?}
 = form.text_field :slug, data: {slug: true}
+= form.text_field :description, placeholder: "Short description"
+= form.text_field :image, placeholder: "URL of main image"
 
 - if (options = ::Comfy::Cms::Layout.options_for_select(@site)).present?
   = form.select :layout_id, options, {}, {data: {url: form_fragments_comfy_admin_blog_post_path(@site, @post.id.to_i)}, id: "fragments-toggle"}

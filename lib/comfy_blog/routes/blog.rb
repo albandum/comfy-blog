@@ -11,7 +11,7 @@ class ActionDispatch::Routing::Mapper
         with_options constraints: { year: %r{\d{4}}, month: %r{\d{1,2}} } do |o|
           o.get ":year",              to: "posts#index",  as: :posts_of_year
           o.get ":year/:month",       to: "posts#index",  as: :posts_of_month
-          o.get ":year/:month/:slug", to: "posts#show",   as: :post
+          o.get ":slug",              to: "posts#show",   as: :post
           o.get "/",                  to: "posts#index",  as: :posts
         end
       end

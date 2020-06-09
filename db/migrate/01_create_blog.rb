@@ -6,6 +6,8 @@ class CreateBlog < ActiveRecord::Migration[5.2]
     create_table :comfy_blog_posts do |t|
       t.integer   :site_id,       null: false
       t.string    :title,         null: false
+      t.string    :description,    null: false
+      t.text      :image,         null: false
       t.string    :slug,          null: false
       t.integer   :layout_id
       t.text      :content_cache, limit: LIMIT
@@ -16,7 +18,8 @@ class CreateBlog < ActiveRecord::Migration[5.2]
       t.timestamps
 
       t.index [:site_id, :is_published]
-      t.index [:year, :month, :slug]
+      t.index [:slug]
+      t.index [:year, :month]
       t.index [:created_at]
     end
 

@@ -33,12 +33,7 @@ private
 
   def load_post
     post_scope = @cms_site.blog_posts.published.where(slug: params[:slug])
-    @cms_post =
-      if params[:year] && params[:month]
-        post_scope.where(year: params[:year], month: params[:month]).first!
-      else
-        post_scope.first!
-      end
+    @cms_post = post_scope.first!
     @cms_layout = @cms_post.layout
   end
 
