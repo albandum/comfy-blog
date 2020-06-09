@@ -100,7 +100,7 @@ class Comfy::Blog::PostsControllerTest < ActionDispatch::IntegrationTest
       blog post content
     HTML
 
-    get comfy_blog_post_path(@site.path, @post.year, @post.month, @post.slug)
+    get comfy_blog_post_path(@site.path, @post.slug)
     assert_response :success
     assert_equal expected, response.body
   end
@@ -108,13 +108,7 @@ class Comfy::Blog::PostsControllerTest < ActionDispatch::IntegrationTest
   def test_get_show_unpublished
     @post.update_attribute(:is_published, false)
     assert_exception_raised ComfortableMexicanSofa::MissingPage do
-      get comfy_blog_post_path(@site.path, @post.year, @post.month, @post.slug)
-    end
-  end
-
-  def test_get_show_with_date_invalid
-    assert_exception_raised ComfortableMexicanSofa::MissingPage do
-      get comfy_blog_post_path(@site.path, 1234, 99, @post.slug)
+      get comfy_blog_post_path(@site.path, @post.slug)
     end
   end
 
