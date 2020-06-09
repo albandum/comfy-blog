@@ -8,7 +8,7 @@ xml.rss version: "2.0" do
     xml.link comfy_blog_posts_url(@cms_site.path)
 
     @blog_posts.each do |post|
-      url = comfy_blog_post_url(@cms_site.path, post.year, post.month, post.slug)
+      url = comfy_blog_post_url(@cms_site.path, post.slug)
 
       xml.item do
         xml.title post.title

@@ -2,6 +2,6 @@
 
 module ComfyBlog
 
-  VERSION = "2.0.71"
+  VERSION = "2.0.72"
 
 end
